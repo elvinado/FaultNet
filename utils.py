@@ -70,9 +70,9 @@ def prediction(model, data, device):
     model.eval()
     data = normalization(data)
     m1, m2, m3 = data.shape
-    c1 = (np.ceil(m1 / 16) * 16).astype(np.int)
-    c2 = (np.ceil(m2 / 16) * 16).astype(np.int)
-    c3 = (np.ceil(m3 / 16) * 16).astype(np.int)
+    c1 = (np.ceil(m1 / 16) * 16).astype(int)
+    c2 = (np.ceil(m2 / 16) * 16).astype(int)
+    c3 = (np.ceil(m3 / 16) * 16).astype(int)
     input_tensor = np.zeros((c1, c2, c3), dtype=np.float32) + 0.5
     input_tensor[:m1, :m2, :m3] = data
     input_tensor = torch.from_numpy(input_tensor)[None, None, :, :, :].to(device)
